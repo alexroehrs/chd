@@ -1,0 +1,66 @@
+{
+  "meta": {
+    "experiment": "load-write-high",
+    "label": "p2s",
+    "date": "2026-10-15T20:17:39.643Z",
+    "host": {
+      "cpus": 2,
+      "cpuModel": "Intel(R) Xeon(R) Processor @ 2.10GHz",
+      "memGB": 8,
+      "node": "v22.22.0",
+      "platform": "linux 6.18.44-fc-v114"
+    },
+    "rpcUrl": "http://127.0.0.1:8545"
+  },
+  "data": {
+    "network": {
+      "validators": 4,
+      "blockPeriodObservedS": 2,
+      "clientVersion": "besu/v26.9.0/linux-x86_64/openjdk-java-25",
+      "peers": 3
+    },
+    "recordBytes": 16384,
+    "durationS": 60,
+    "warmupS": 10,
+    "read": [],
+    "readAudit": [],
+    "write": [
+      {
+        "vus": 128,
+        "durationS": 60,
+        "completed": 3447,
+        "errors": 0,
+        "errorSamples": [],
+        "throughputOpsPerS": 57.45,
+        "latencyMs": {
+          "n": 3447,
+          "mean": 2160.96,
+          "sd": 541.94,
+          "min": 780.4,
+          "p50": 2097.46,
+          "p90": 2580.19,
+          "p99": 3809.09,
+          "max": 4572.58
+        }
+      },
+      {
+        "vus": 256,
+        "durationS": 60,
+        "completed": 3584,
+        "errors": 0,
+        "errorSamples": [],
+        "throughputOpsPerS": 59.73,
+        "latencyMs": {
+          "n": 3584,
+          "mean": 4009.92,
+          "sd": 483.47,
+          "min": 2214.16,
+          "p50": 4041.12,
+          "p90": 4578.96,
+          "p99": 5096.38,
+          "max": 5462.77
+        }
+      }
+    ]
+  }
+}

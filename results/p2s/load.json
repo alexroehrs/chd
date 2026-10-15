@@ -1,0 +1,254 @@
+{
+  "meta": {
+    "experiment": "load",
+    "label": "p2s",
+    "date": "2026-10-15T20:15:07.341Z",
+    "host": {
+      "cpus": 2,
+      "cpuModel": "Intel(R) Xeon(R) Processor @ 2.10GHz",
+      "memGB": 8,
+      "node": "v22.22.0",
+      "platform": "linux 6.18.44-fc-v114"
+    },
+    "rpcUrl": "http://127.0.0.1:8545"
+  },
+  "data": {
+    "network": {
+      "validators": 4,
+      "blockPeriodObservedS": 2,
+      "clientVersion": "besu/v26.9.0/linux-x86_64/openjdk-java-25",
+      "peers": 3
+    },
+    "recordBytes": 16384,
+    "durationS": 60,
+    "warmupS": 10,
+    "read": [
+      {
+        "vus": 1,
+        "durationS": 60,
+        "completed": 5379,
+        "errors": 0,
+        "errorSamples": [],
+        "throughputOpsPerS": 89.65,
+        "latencyMs": {
+          "n": 5379,
+          "mean": 11.15,
+          "sd": 3.84,
+          "min": 6.4,
+          "p50": 10.05,
+          "p90": 14.14,
+          "p99": 27.59,
+          "max": 65.41
+        }
+      },
+      {
+        "vus": 4,
+        "durationS": 60,
+        "completed": 11191,
+        "errors": 0,
+        "errorSamples": [],
+        "throughputOpsPerS": 186.52,
+        "latencyMs": {
+          "n": 11191,
+          "mean": 21.44,
+          "sd": 7.22,
+          "min": 8.65,
+          "p50": 19.54,
+          "p90": 29.79,
+          "p99": 46.52,
+          "max": 143.07
+        }
+      },
+      {
+        "vus": 16,
+        "durationS": 60,
+        "completed": 12674,
+        "errors": 0,
+        "errorSamples": [],
+        "throughputOpsPerS": 211.23,
+        "latencyMs": {
+          "n": 12674,
+          "mean": 75.68,
+          "sd": 21.79,
+          "min": 26.6,
+          "p50": 70.84,
+          "p90": 101.56,
+          "p99": 145.62,
+          "max": 327.55
+        }
+      },
+      {
+        "vus": 64,
+        "durationS": 60,
+        "completed": 13914,
+        "errors": 9,
+        "errorSamples": [
+          "GET /records/0xe42965f3c3b6a9585a3a943cb8691c1fba4caa22962ccd07657ce9d0a1b6e9d5: 500 internal error",
+          "GET /records/0xa38d922e4d3fb76726193b940853f6c0162618628dd3a69dc12cb2a432ad3054: 500 internal error",
+          "GET /records/0x5941b70d7db591d6e614c43f9984fbe88f52a382fd669e2fb77e1d7c8317c13e: 500 internal error",
+          "GET /records/0x0c24cfe379fe2bd0f82ac082738ca5bcd5ee67ab118dda526c8cdcfd660b48a8: 500 internal error",
+          "GET /records/0x5453e401fd99a15c50b769599d0e77f475da8df34e39c99c83052852203f8fd2: 500 internal error"
+        ],
+        "throughputOpsPerS": 231.9,
+        "latencyMs": {
+          "n": 13914,
+          "mean": 274.77,
+          "sd": 52.03,
+          "min": 96.11,
+          "p50": 267.2,
+          "p90": 340.72,
+          "p99": 452.79,
+          "max": 554.28
+        }
+      }
+    ],
+    "readAudit": [
+      {
+        "vus": 1,
+        "durationS": 60,
+        "completed": 29,
+        "errors": 0,
+        "errorSamples": [],
+        "throughputOpsPerS": 0.48,
+        "latencyMs": {
+          "n": 29,
+          "mean": 1992.53,
+          "sd": 111.26,
+          "min": 1795.13,
+          "p50": 2053.93,
+          "p90": 2064.41,
+          "p99": 2087.68,
+          "max": 2087.68
+        }
+      },
+      {
+        "vus": 4,
+        "durationS": 60,
+        "completed": 112,
+        "errors": 0,
+        "errorSamples": [],
+        "throughputOpsPerS": 1.87,
+        "latencyMs": {
+          "n": 112,
+          "mean": 2001.27,
+          "sd": 119.5,
+          "min": 1791.89,
+          "p50": 2061.64,
+          "p90": 2097.25,
+          "p99": 2153.13,
+          "max": 2154.06
+        }
+      },
+      {
+        "vus": 16,
+        "durationS": 60,
+        "completed": 468,
+        "errors": 0,
+        "errorSamples": [],
+        "throughputOpsPerS": 7.8,
+        "latencyMs": {
+          "n": 468,
+          "mean": 1997.92,
+          "sd": 129.02,
+          "min": 1791.75,
+          "p50": 1965.63,
+          "p90": 2163.68,
+          "p99": 2234.5,
+          "max": 2287.86
+        }
+      },
+      {
+        "vus": 64,
+        "durationS": 60,
+        "completed": 1855,
+        "errors": 0,
+        "errorSamples": [],
+        "throughputOpsPerS": 30.92,
+        "latencyMs": {
+          "n": 1855,
+          "mean": 1993.62,
+          "sd": 142.47,
+          "min": 1602.04,
+          "p50": 1994.12,
+          "p90": 2174.87,
+          "p99": 2339.91,
+          "max": 2496.67
+        }
+      }
+    ],
+    "write": [
+      {
+        "vus": 1,
+        "durationS": 60,
+        "completed": 30,
+        "errors": 0,
+        "errorSamples": [],
+        "throughputOpsPerS": 0.5,
+        "latencyMs": {
+          "n": 30,
+          "mean": 1997.43,
+          "sd": 109.42,
+          "min": 1800.37,
+          "p50": 2052.79,
+          "p90": 2065.59,
+          "p99": 2076.81,
+          "max": 2076.81
+        }
+      },
+      {
+        "vus": 4,
+        "durationS": 60,
+        "completed": 116,
+        "errors": 0,
+        "errorSamples": [],
+        "throughputOpsPerS": 1.93,
+        "latencyMs": {
+          "n": 116,
+          "mean": 2001.94,
+          "sd": 118.01,
+          "min": 1799.26,
+          "p50": 2070.69,
+          "p90": 2093.74,
+          "p99": 2101.36,
+          "max": 2101.41
+        }
+      },
+      {
+        "vus": 16,
+        "durationS": 60,
+        "completed": 479,
+        "errors": 0,
+        "errorSamples": [],
+        "throughputOpsPerS": 7.98,
+        "latencyMs": {
+          "n": 479,
+          "mean": 1996.26,
+          "sd": 94.88,
+          "min": 1806.16,
+          "p50": 1962.86,
+          "p90": 2188.64,
+          "p99": 2252.19,
+          "max": 2272.72
+        }
+      },
+      {
+        "vus": 64,
+        "durationS": 60,
+        "completed": 1856,
+        "errors": 0,
+        "errorSamples": [],
+        "throughputOpsPerS": 30.93,
+        "latencyMs": {
+          "n": 1856,
+          "mean": 1994.98,
+          "sd": 190.86,
+          "min": 1430.21,
+          "p50": 2001.29,
+          "p90": 2239.07,
+          "p99": 2518.15,
+          "max": 2622.57
+        }
+      }
+    ]
+  }
+}
