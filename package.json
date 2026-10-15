@@ -1,0 +1,28 @@
+{
+  "name": "chd",
+  "version": "1.0.0",
+  "description": "Chained Health Data: consent, integrity and audit of off-chain encrypted HL7 FHIR records on a Hyperledger Besu QBFT network",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "compile": "node scripts/compile.mjs",
+    "network:setup": "bash network/setup.sh",
+    "network:start": "bash network/start.sh",
+    "network:stop": "bash network/stop.sh",
+    "deploy": "node scripts/deploy.mjs",
+    "gateway": "node src/gateway.mjs",
+    "test": "node --test --test-concurrency=1 test/*.test.mjs",
+    "bench": "node bench/run-bench.mjs",
+    "demo": "node scripts/demo.mjs"
+  },
+  "dependencies": {
+    "ethers": "6.17.0",
+    "express": "5.3.0"
+  },
+  "devDependencies": {
+    "solc": "0.8.37"
+  }
+}

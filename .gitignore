@@ -1,0 +1,13 @@
+node_modules/
+artifacts/
+deployment.json
+gateway-data/
+network/data/
+network/generated/
+network/logs/
+*.log
+.DS_Store
+results/_superseded/
+!results/**/tests.log
+figures/
+__pycache__/
