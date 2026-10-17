@@ -1,6 +1,6 @@
 # Chained Health Data (CHD)
 
-Patient-controlled sharing of encrypted **HL7 FHIR R4** records on a permissioned
+Patient-controlled sharing of encrypted **HL7 FHIR R5** records on a permissioned
 **Hyperledger Besu** network with **QBFT** consensus.
 
 CHD keeps clinical content **off-chain and encrypted on the client**. The ledger stores only
