@@ -2,13 +2,13 @@
   "meta": {
     "experiment": "load",
     "label": "p2s",
-    "date": "2026-10-15T20:15:07.341Z",
+    "date": "2026-10-16T21:30:52.643Z",
     "host": {
       "cpus": 2,
       "cpuModel": "Intel(R) Xeon(R) Processor @ 2.10GHz",
       "memGB": 8,
       "node": "v22.22.0",
-      "platform": "linux 6.18.44-fc-v114"
+      "platform": "linux 6.18.44-fc-v139"
     },
     "rpcUrl": "http://127.0.0.1:8545"
   },
@@ -26,79 +26,75 @@
       {
         "vus": 1,
         "durationS": 60,
-        "completed": 5379,
-        "errors": 0,
-        "errorSamples": [],
-        "throughputOpsPerS": 89.65,
+        "completed": 5013,
+        "errors": 1,
+        "errorSamples": [
+          "missing revert data (action=\"call\", data=null, reason=null, transaction={ \"data\": \"0x213681cdad9f6c078dfcde66b8c72a1c9062e5ca58220bd0ad2d73bf8666133b614fa17b\", \"to\": \"0xaB902Fcc3919172BA71BbfdE3866D7c336DBbAd2\" }, invocation=null, revert=null, code=CALL_EXCEPTION, version=6.17.0)"
+        ],
+        "throughputOpsPerS": 83.55,
         "latencyMs": {
-          "n": 5379,
-          "mean": 11.15,
-          "sd": 3.84,
-          "min": 6.4,
-          "p50": 10.05,
-          "p90": 14.14,
-          "p99": 27.59,
-          "max": 65.41
+          "n": 5013,
+          "mean": 11.95,
+          "sd": 4.47,
+          "min": 7.02,
+          "p50": 10.7,
+          "p90": 15.46,
+          "p99": 31.97,
+          "max": 86.37
         }
       },
       {
         "vus": 4,
         "durationS": 60,
-        "completed": 11191,
+        "completed": 10647,
         "errors": 0,
         "errorSamples": [],
-        "throughputOpsPerS": 186.52,
+        "throughputOpsPerS": 177.45,
         "latencyMs": {
-          "n": 11191,
-          "mean": 21.44,
-          "sd": 7.22,
-          "min": 8.65,
-          "p50": 19.54,
-          "p90": 29.79,
-          "p99": 46.52,
-          "max": 143.07
+          "n": 10647,
+          "mean": 22.53,
+          "sd": 7.73,
+          "min": 9.56,
+          "p50": 20.47,
+          "p90": 31.79,
+          "p99": 51.93,
+          "max": 99.77
         }
       },
       {
         "vus": 16,
         "durationS": 60,
-        "completed": 12674,
+        "completed": 12430,
         "errors": 0,
         "errorSamples": [],
-        "throughputOpsPerS": 211.23,
+        "throughputOpsPerS": 207.17,
         "latencyMs": {
-          "n": 12674,
-          "mean": 75.68,
-          "sd": 21.79,
-          "min": 26.6,
-          "p50": 70.84,
-          "p90": 101.56,
-          "p99": 145.62,
-          "max": 327.55
+          "n": 12430,
+          "mean": 77.13,
+          "sd": 20.22,
+          "min": 24.83,
+          "p50": 73.05,
+          "p90": 103.78,
+          "p99": 141.85,
+          "max": 196.13
         }
       },
       {
         "vus": 64,
         "durationS": 60,
-        "completed": 13914,
-        "errors": 9,
-        "errorSamples": [
-          "GET /records/0xe42965f3c3b6a9585a3a943cb8691c1fba4caa22962ccd07657ce9d0a1b6e9d5: 500 internal error",
-          "GET /records/0xa38d922e4d3fb76726193b940853f6c0162618628dd3a69dc12cb2a432ad3054: 500 internal error",
-          "GET /records/0x5941b70d7db591d6e614c43f9984fbe88f52a382fd669e2fb77e1d7c8317c13e: 500 internal error",
-          "GET /records/0x0c24cfe379fe2bd0f82ac082738ca5bcd5ee67ab118dda526c8cdcfd660b48a8: 500 internal error",
-          "GET /records/0x5453e401fd99a15c50b769599d0e77f475da8df34e39c99c83052852203f8fd2: 500 internal error"
-        ],
-        "throughputOpsPerS": 231.9,
+        "completed": 13511,
+        "errors": 0,
+        "errorSamples": [],
+        "throughputOpsPerS": 225.18,
         "latencyMs": {
-          "n": 13914,
-          "mean": 274.77,
-          "sd": 52.03,
-          "min": 96.11,
-          "p50": 267.2,
-          "p90": 340.72,
-          "p99": 452.79,
-          "max": 554.28
+          "n": 13511,
+          "mean": 283.08,
+          "sd": 52.08,
+          "min": 79.26,
+          "p50": 279.66,
+          "p90": 351.53,
+          "p99": 416.83,
+          "max": 566.18
         }
       }
     ],
@@ -112,87 +108,13 @@
         "throughputOpsPerS": 0.48,
         "latencyMs": {
           "n": 29,
-          "mean": 1992.53,
-          "sd": 111.26,
-          "min": 1795.13,
-          "p50": 2053.93,
-          "p90": 2064.41,
-          "p99": 2087.68,
-          "max": 2087.68
-        }
-      },
-      {
-        "vus": 4,
-        "durationS": 60,
-        "completed": 112,
-        "errors": 0,
-        "errorSamples": [],
-        "throughputOpsPerS": 1.87,
-        "latencyMs": {
-          "n": 112,
-          "mean": 2001.27,
-          "sd": 119.5,
-          "min": 1791.89,
-          "p50": 2061.64,
-          "p90": 2097.25,
-          "p99": 2153.13,
-          "max": 2154.06
-        }
-      },
-      {
-        "vus": 16,
-        "durationS": 60,
-        "completed": 468,
-        "errors": 0,
-        "errorSamples": [],
-        "throughputOpsPerS": 7.8,
-        "latencyMs": {
-          "n": 468,
-          "mean": 1997.92,
-          "sd": 129.02,
-          "min": 1791.75,
-          "p50": 1965.63,
-          "p90": 2163.68,
-          "p99": 2234.5,
-          "max": 2287.86
-        }
-      },
-      {
-        "vus": 64,
-        "durationS": 60,
-        "completed": 1855,
-        "errors": 0,
-        "errorSamples": [],
-        "throughputOpsPerS": 30.92,
-        "latencyMs": {
-          "n": 1855,
-          "mean": 1993.62,
-          "sd": 142.47,
-          "min": 1602.04,
-          "p50": 1994.12,
-          "p90": 2174.87,
-          "p99": 2339.91,
-          "max": 2496.67
-        }
-      }
-    ],
-    "write": [
-      {
-        "vus": 1,
-        "durationS": 60,
-        "completed": 30,
-        "errors": 0,
-        "errorSamples": [],
-        "throughputOpsPerS": 0.5,
-        "latencyMs": {
-          "n": 30,
-          "mean": 1997.43,
-          "sd": 109.42,
-          "min": 1800.37,
-          "p50": 2052.79,
-          "p90": 2065.59,
-          "p99": 2076.81,
-          "max": 2076.81
+          "mean": 2003.45,
+          "sd": 114.01,
+          "min": 1802.33,
+          "p50": 2064.06,
+          "p90": 2089.27,
+          "p99": 2097.44,
+          "max": 2097.44
         }
       },
       {
@@ -204,31 +126,105 @@
         "throughputOpsPerS": 1.93,
         "latencyMs": {
           "n": 116,
-          "mean": 2001.94,
-          "sd": 118.01,
-          "min": 1799.26,
-          "p50": 2070.69,
-          "p90": 2093.74,
-          "p99": 2101.36,
-          "max": 2101.41
+          "mean": 1996.63,
+          "sd": 122.91,
+          "min": 1797.81,
+          "p50": 2064.7,
+          "p90": 2104.55,
+          "p99": 2133.63,
+          "max": 2136.46
         }
       },
       {
         "vus": 16,
         "durationS": 60,
-        "completed": 479,
+        "completed": 466,
         "errors": 0,
         "errorSamples": [],
-        "throughputOpsPerS": 7.98,
+        "throughputOpsPerS": 7.77,
         "latencyMs": {
-          "n": 479,
-          "mean": 1996.26,
-          "sd": 94.88,
-          "min": 1806.16,
-          "p50": 1962.86,
-          "p90": 2188.64,
-          "p99": 2252.19,
-          "max": 2272.72
+          "n": 466,
+          "mean": 1998.35,
+          "sd": 125.58,
+          "min": 1711.22,
+          "p50": 1998.98,
+          "p90": 2148.26,
+          "p99": 2227.19,
+          "max": 2232.87
+        }
+      },
+      {
+        "vus": 64,
+        "durationS": 60,
+        "completed": 1897,
+        "errors": 0,
+        "errorSamples": [],
+        "throughputOpsPerS": 31.62,
+        "latencyMs": {
+          "n": 1897,
+          "mean": 1994.26,
+          "sd": 123.13,
+          "min": 1677.63,
+          "p50": 1992.69,
+          "p90": 2154.89,
+          "p99": 2281.49,
+          "max": 2382.84
+        }
+      }
+    ],
+    "write": [
+      {
+        "vus": 1,
+        "durationS": 60,
+        "completed": 29,
+        "errors": 0,
+        "errorSamples": [],
+        "throughputOpsPerS": 0.48,
+        "latencyMs": {
+          "n": 29,
+          "mean": 2000.31,
+          "sd": 143.82,
+          "min": 1806.71,
+          "p50": 2066.56,
+          "p90": 2201.05,
+          "p99": 2246.8,
+          "max": 2246.8
+        }
+      },
+      {
+        "vus": 4,
+        "durationS": 60,
+        "completed": 120,
+        "errors": 0,
+        "errorSamples": [],
+        "throughputOpsPerS": 2,
+        "latencyMs": {
+          "n": 120,
+          "mean": 1996.21,
+          "sd": 119.04,
+          "min": 1800.16,
+          "p50": 2067.92,
+          "p90": 2095.27,
+          "p99": 2120.68,
+          "max": 2124.38
+        }
+      },
+      {
+        "vus": 16,
+        "durationS": 60,
+        "completed": 465,
+        "errors": 0,
+        "errorSamples": [],
+        "throughputOpsPerS": 7.75,
+        "latencyMs": {
+          "n": 465,
+          "mean": 1999.86,
+          "sd": 141.32,
+          "min": 1709.21,
+          "p50": 1957.34,
+          "p90": 2228.15,
+          "p99": 2284.36,
+          "max": 2303.79
         }
       },
       {
@@ -240,13 +236,13 @@
         "throughputOpsPerS": 30.93,
         "latencyMs": {
           "n": 1856,
-          "mean": 1994.98,
-          "sd": 190.86,
-          "min": 1430.21,
-          "p50": 2001.29,
-          "p90": 2239.07,
-          "p99": 2518.15,
-          "max": 2622.57
+          "mean": 2000.81,
+          "sd": 174.42,
+          "min": 1474.38,
+          "p50": 2006.09,
+          "p90": 2207.81,
+          "p99": 2449.87,
+          "max": 2637.74
         }
       }
     ]

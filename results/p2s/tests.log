@@ -6,121 +6,121 @@ TAP version 13
 # Subtest: encrypt/decrypt round trip with wrapped key
 ok 1 - encrypt/decrypt round trip with wrapped key
   ---
-  duration_ms: 15.271347
+  duration_ms: 8.230119
   type: 'test'
   ...
 # Subtest: tampered ciphertext is rejected by GCM authentication
 ok 2 - tampered ciphertext is rejected by GCM authentication
   ---
-  duration_ms: 0.911172
+  duration_ms: 0.718117
   type: 'test'
   ...
 # Subtest: envelope cannot be replayed under another record id (AAD binding)
 ok 3 - envelope cannot be replayed under another record id (AAD binding)
   ---
-  duration_ms: 0.568759
+  duration_ms: 0.470238
   type: 'test'
   ...
 # Subtest: a different recipient cannot unwrap the data key
 ok 4 - a different recipient cannot unwrap the data key
   ---
-  duration_ms: 1.712985
+  duration_ms: 1.015979
   type: 'test'
   ...
 # Subtest: digest changes with any envelope change
 ok 5 - digest changes with any envelope change
   ---
-  duration_ms: 0.630408
+  duration_ms: 0.378285
   type: 'test'
   ...
 # Subtest: synthetic bundles are valid FHIR; malformed content is rejected
 ok 6 - synthetic bundles are valid FHIR; malformed content is rejected
   ---
-  duration_ms: 400.407929
+  duration_ms: 535.272134
   type: 'test'
   ...
 # Subtest: F1 owner can store and read back its own record
 ok 7 - F1 owner can store and read back its own record
   ---
-  duration_ms: 7316.000793
+  duration_ms: 8813.533458
   type: 'test'
   ...
 # Subtest: T1 institution without a grant is denied by the gateway
 ok 8 - T1 institution without a grant is denied by the gateway
   ---
-  duration_ms: 24.955584
+  duration_ms: 32.566185
   type: 'test'
   ...
 # Subtest: T2 non-institution account cannot receive a grant
 ok 9 - T2 non-institution account cannot receive a grant
   ---
-  duration_ms: 16.749234
+  duration_ms: 50.302141
   type: 'test'
   ...
 # Subtest: T3 only the owner can grant, update or erase
 ok 10 - T3 only the owner can grant, update or erase
   ---
-  duration_ms: 17.070935
+  duration_ms: 51.685809
   type: 'test'
   ...
 # Subtest: F2 granted institution retrieves, decrypts and verifies the record
 ok 11 - F2 granted institution retrieves, decrypts and verifies the record
   ---
-  duration_ms: 3897.924144
+  duration_ms: 3514.358482
   type: 'test'
   ...
 # Subtest: T4 audit entries cannot be written without access
 ok 12 - T4 audit entries cannot be written without access
   ---
-  duration_ms: 8.936257
+  duration_ms: 13.993304
   type: 'test'
   ...
 # Subtest: T5 replayed, stale and forged requests are rejected
 ok 13 - T5 replayed, stale and forged requests are rejected
   ---
-  duration_ms: 27.20177
+  duration_ms: 39.923696
   type: 'test'
   ...
 # Subtest: T6 upload whose digest differs from the on-chain hash is refused
 ok 14 - T6 upload whose digest differs from the on-chain hash is refused
   ---
-  duration_ms: 1833.960619
+  duration_ms: 2203.91938
   type: 'test'
   ...
 # Subtest: T7 revocation takes effect at the next request
 ok 15 - T7 revocation takes effect at the next request
   ---
-  duration_ms: 5980.517424
+  duration_ms: 5785.93818
   type: 'test'
   ...
 # Subtest: T8 expired grants are no longer honoured
 ok 16 - T8 expired grants are no longer honoured
   ---
-  duration_ms: 14159.098369
+  duration_ms: 14242.557173
   type: 'test'
   ...
 # Subtest: T9 patient identifier and name never appear in clear on the gateway or the ledger
 ok 17 - T9 patient identifier and name never appear in clear on the gateway or the ledger
   ---
-  duration_ms: 178.581522
+  duration_ms: 243.925604
   type: 'test'
   ...
 # Subtest: F3 erasure removes ciphertext and keys and blocks every reader
 ok 18 - F3 erasure removes ciphertext and keys and blocks every reader
   ---
-  duration_ms: 11687.197486
+  duration_ms: 11617.863985
   type: 'test'
   ...
 # Subtest: F4 duplicate identifiers and empty digests are rejected
 ok 19 - F4 duplicate identifiers and empty digests are rejected
   ---
-  duration_ms: 8.020688
+  duration_ms: 15.775802
   type: 'test'
   ...
 # Subtest: F5 invalid FHIR content never leaves the client
 ok 20 - F5 invalid FHIR content never leaves the client
   ---
-  duration_ms: 0.250713
+  duration_ms: 0.269599
   type: 'test'
   ...
 1..20
@@ -131,4 +131,4 @@ ok 20 - F5 invalid FHIR content never leaves the client
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 46454.195229
+# duration_ms 49070.434404

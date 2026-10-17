@@ -2,13 +2,13 @@
   "meta": {
     "experiment": "load-write-high",
     "label": "p2s",
-    "date": "2026-10-15T20:17:39.643Z",
+    "date": "2026-10-16T21:33:24.638Z",
     "host": {
       "cpus": 2,
       "cpuModel": "Intel(R) Xeon(R) Processor @ 2.10GHz",
       "memGB": 8,
       "node": "v22.22.0",
-      "platform": "linux 6.18.44-fc-v114"
+      "platform": "linux 6.18.44-fc-v139"
     },
     "rpcUrl": "http://127.0.0.1:8545"
   },
@@ -28,37 +28,37 @@
       {
         "vus": 128,
         "durationS": 60,
-        "completed": 3447,
+        "completed": 3273,
         "errors": 0,
         "errorSamples": [],
-        "throughputOpsPerS": 57.45,
+        "throughputOpsPerS": 54.55,
         "latencyMs": {
-          "n": 3447,
-          "mean": 2160.96,
-          "sd": 541.94,
-          "min": 780.4,
-          "p50": 2097.46,
-          "p90": 2580.19,
-          "p99": 3809.09,
-          "max": 4572.58
+          "n": 3273,
+          "mean": 2263.43,
+          "sd": 609.1,
+          "min": 620.09,
+          "p50": 2088.16,
+          "p90": 3426.65,
+          "p99": 3853.39,
+          "max": 4102.94
         }
       },
       {
         "vus": 256,
         "durationS": 60,
-        "completed": 3584,
+        "completed": 3415,
         "errors": 0,
         "errorSamples": [],
-        "throughputOpsPerS": 59.73,
+        "throughputOpsPerS": 56.92,
         "latencyMs": {
-          "n": 3584,
-          "mean": 4009.92,
-          "sd": 483.47,
-          "min": 2214.16,
-          "p50": 4041.12,
-          "p90": 4578.96,
-          "p99": 5096.38,
-          "max": 5462.77
+          "n": 3415,
+          "mean": 4219.93,
+          "sd": 627.79,
+          "min": 1151.27,
+          "p50": 4122.18,
+          "p90": 4997.59,
+          "p99": 5502.61,
+          "max": 5647.1
         }
       }
     ]
