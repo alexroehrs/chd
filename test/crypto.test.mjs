@@ -56,4 +56,11 @@ test('synthetic bundles are valid FHIR; malformed content is rejected', () => {
   assert.equal(validateFhir({ foo: 'bar' }).valid, false);
   const noSubject = { resourceType: 'Observation', status: 'final', code: { text: 'x' } };
   assert.equal(validateFhir(noSubject).valid, false);
+  // R5 shapes: Condition requires clinicalStatus; MedicationStatement uses a CodeableReference
+  const subject = { reference: 'Patient/p1' };
+  assert.equal(validateFhir({ resourceType: 'Condition', code: { text: 'x' }, subject }).valid, false);
+  const r4Medication = { resourceType: 'MedicationStatement', status: 'active', medicationCodeableConcept: { text: 'x' }, subject };
+  assert.equal(validateFhir(r4Medication).valid, false);
+  const r5Medication = { resourceType: 'MedicationStatement', status: 'recorded', medication: { concept: { text: 'x' } }, subject };
+  assert.equal(validateFhir(r5Medication).valid, true);
 });
