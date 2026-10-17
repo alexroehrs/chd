@@ -1,4 +1,4 @@
-// Structural validation of HL7 FHIR R4 content accepted by CHD clients.
+// Structural validation of HL7 FHIR R5 (v5.0.0) content accepted by CHD clients.
 // Validation happens on the client, before encryption, because the gateway only ever
 // sees ciphertext. This is a structural check of the subset used by CHD (Bundle,
 // Patient, Observation, Condition, MedicationStatement, AllergyIntolerance,
@@ -10,7 +10,14 @@ const ID_RE = /^[A-Za-z0-9\-.]{1,64}$/;
 const DATE_RE = /^\d{4}(-\d{2}(-\d{2})?)?$/;
 const DATETIME_RE = /^\d{4}(-\d{2}(-\d{2}(T\d{2}:\d{2}(:\d{2}(\.\d+)?)?(Z|[+-]\d{2}:\d{2})?)?)?)?$/;
 const GENDERS = new Set(['male', 'female', 'other', 'unknown']);
-const BUNDLE_TYPES = new Set(['document', 'collection', 'transaction', 'batch', 'searchset']);
+const BUNDLE_TYPES = new Set([
+  'document', 'message', 'transaction', 'transaction-response', 'batch', 'batch-response', 'history',
+  'searchset', 'collection', 'subscription-notification',
+]);
+const OBSERVATION_STATUS = new Set([
+  'registered', 'preliminary', 'final', 'amended', 'corrected', 'cancelled', 'entered-in-error', 'unknown',
+]);
+const MEDICATION_STATEMENT_STATUS = new Set(['recorded', 'entered-in-error', 'draft']);
 const SUPPORTED = new Set([
   'Patient', 'Observation', 'Condition', 'MedicationStatement', 'AllergyIntolerance', 'Encounter',
 ]);
@@ -27,6 +34,15 @@ function checkCodeableConcept(cc, where, errors) {
   } else if (typeof cc.text !== 'string') {
     errors.push(`${where}: coding or text required`);
   }
+}
+
+// R5 CodeableReference: a concept, a reference, or both.
+function checkCodeableReference(cr, where, errors) {
+  if (!cr || typeof cr !== 'object' || (cr.concept === undefined && cr.reference === undefined)) {
+    return errors.push(`${where}: CodeableReference requires concept or reference`);
+  }
+  if (cr.concept !== undefined) checkCodeableConcept(cr.concept, `${where}.concept`, errors);
+  if (cr.reference !== undefined) checkReference(cr.reference, `${where}.reference`, errors);
 }
 
 function checkReference(ref, where, errors) {
@@ -46,9 +62,7 @@ function validateResource(r, where, errors) {
       if (r.name !== undefined && !Array.isArray(r.name)) errors.push(`${where}.name must be an array`);
       break;
     case 'Observation':
-      if (!['registered', 'preliminary', 'final', 'amended', 'corrected', 'cancelled'].includes(r.status)) {
-        errors.push(`${where}.status invalid`);
-      }
+      if (!OBSERVATION_STATUS.has(r.status)) errors.push(`${where}.status invalid`);
       checkCodeableConcept(r.code, `${where}.code`, errors);
       checkReference(r.subject, `${where}.subject`, errors);
       if (r.effectiveDateTime !== undefined && !DATETIME_RE.test(r.effectiveDateTime)) {
@@ -56,13 +70,17 @@ function validateResource(r, where, errors) {
       }
       break;
     case 'Condition':
+      checkCodeableConcept(r.clinicalStatus, `${where}.clinicalStatus`, errors);
+      if (r.code !== undefined) checkCodeableConcept(r.code, `${where}.code`, errors);
+      checkReference(r.subject, `${where}.subject`, errors);
+      break;
     case 'AllergyIntolerance':
-      checkCodeableConcept(r.code, `${where}.code`, errors);
-      checkReference(r.subject ?? r.patient, `${where}.subject`, errors);
+      if (r.code !== undefined) checkCodeableConcept(r.code, `${where}.code`, errors);
+      checkReference(r.patient, `${where}.patient`, errors);
       break;
     case 'MedicationStatement':
-      if (typeof r.status !== 'string') errors.push(`${where}.status required`);
-      checkCodeableConcept(r.medicationCodeableConcept, `${where}.medicationCodeableConcept`, errors);
+      if (!MEDICATION_STATEMENT_STATUS.has(r.status)) errors.push(`${where}.status invalid`);
+      checkCodeableReference(r.medication, `${where}.medication`, errors);
       checkReference(r.subject, `${where}.subject`, errors);
       break;
     case 'Encounter':
@@ -72,7 +90,7 @@ function validateResource(r, where, errors) {
   }
 }
 
-/** Returns { valid, errors } for a FHIR R4 Bundle or a single supported resource. */
+/** Returns { valid, errors } for a FHIR R5 Bundle or a single supported resource. */
 export function validateFhir(doc) {
   const errors = [];
   if (doc?.resourceType === 'Bundle') {
