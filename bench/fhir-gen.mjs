@@ -1,4 +1,4 @@
-// Deterministic generator of synthetic HL7 FHIR R4 Bundles (no real patient data).
+// Deterministic generator of synthetic HL7 FHIR R5 Bundles (no real patient data).
 // Each Bundle has one Patient plus Observations, Conditions and MedicationStatements
 // added until the serialised size reaches the requested number of bytes.
 import crypto from 'node:crypto';
@@ -61,12 +61,17 @@ export function syntheticBundle(targetBytes = 4096, seed = 1) {
       };
     } else if (kind === 8) {
       const [code, display] = pick(SNOMED);
-      res = { resourceType: 'Condition', id: `c${i}`, code: { coding: [{ system: 'http://snomed.info/sct', code, display }] }, subject };
+      res = {
+        resourceType: 'Condition', id: `c${i}`,
+        clinicalStatus: { coding: [{ system: 'http://terminology.hl7.org/CodeSystem/condition-clinical', code: 'active' }] },
+        code: { coding: [{ system: 'http://snomed.info/sct', code, display }] },
+        subject,
+      };
     } else {
       const [code, display] = pick(RXNORM);
       res = {
-        resourceType: 'MedicationStatement', id: `m${i}`, status: 'active',
-        medicationCodeableConcept: { coding: [{ system: 'http://www.nlm.nih.gov/research/umls/rxnorm', code, display }] },
+        resourceType: 'MedicationStatement', id: `m${i}`, status: 'recorded',
+        medication: { concept: { coding: [{ system: 'http://www.nlm.nih.gov/research/umls/rxnorm', code, display }] } },
         subject,
       };
     }

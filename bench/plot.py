@@ -42,8 +42,9 @@ def fig_gas():
     a.barh(order[::-1], vals[::-1], color=C["chd"])
     for y, v in enumerate(vals[::-1]):
         a.text(v + 1, y, f"{v:.1f}k", va="center", fontsize=6.5)
-    a.set_xlabel("gas used per transaction (thousands)")
-    a.set_title("(a) CHD registry operations")
+    a.set_xlabel("mean gas per transaction (thousands)")
+    a.set_ylabel("registry function")
+    a.set_title("(a) gas cost of the CHD registry functions")
     a.set_xlim(0, max(vals) * 1.25)
     sizes = [r["payloadBytes"]["mean"] / 1024 for r in d["baseline"]]
     base = [r["gas"]["mean"] for r in d["baseline"]]
@@ -51,8 +52,8 @@ def fig_gas():
     b.loglog(sizes, base, "o-", color=C["base"], label="encrypted record on-chain (baseline)")
     b.loglog(sizes, [chd] * len(sizes), "s--", color=C["chd"], label="CHD (digest on-chain)")
     b.set_xlabel("encrypted payload size (KiB)")
-    b.set_ylabel("gas per write")
-    b.set_title("(b) storage cost vs. payload size")
+    b.set_ylabel("gas per write (log scale)")
+    b.set_title("(b) gas per write vs. encrypted payload size")
     b.legend(frameon=False, loc="upper left", fontsize=6)
     b.set_ylim(3e4, 3e9)
     fig.tight_layout()
@@ -75,8 +76,8 @@ def fig_crypto():
     ax.set_yscale("log")
     ax.set_xticks([1, 4, 16, 64, 256, 1024])
     ax.set_xticklabels(["1", "4", "16", "64", "256", "1024"])
-    ax.set_xlabel("FHIR Bundle size (KiB)")
-    ax.set_ylabel("time (ms), median and p90")
+    ax.set_xlabel("FHIR Bundle size (KiB, log scale)")
+    ax.set_ylabel("client-side time (ms, log scale)\nmedian, bar up to p90")
     ax.legend(frameon=False, fontsize=6)
     fig.tight_layout()
     fig.savefig(out / "crypto.pdf")
@@ -98,17 +99,23 @@ def fig_load():
         a.plot(vus, [r["throughputOpsPerS"] for r in rows], marker=mk, ls=ls, color=col, label=lab, ms=3.5, lw=1.1)
         b.plot(vus, [r["latencyMs"]["p50"] for r in rows], marker=mk, ls=ls, color=col, ms=3.5, lw=1.1)
         b.plot(vus, [r["latencyMs"]["p99"] for r in rows], marker=mk, ls=":", color=col, ms=2, lw=0.9, alpha=0.6)
-    ticks = [1, 4, 16, 64, 256]
+    ticks = [1, 4, 16, 64, 128, 256]
     for ax in (a, b):
         ax.set_xscale("log", base=2)
         ax.set_xticks(ticks)
         ax.set_xticklabels([str(t) for t in ticks])
-        ax.set_xlabel("concurrent clients")
+        ax.set_xlabel("concurrent clients (log scale)")
         ax.set_yscale("log")
-    a.set_ylabel("throughput (operations/s)")
-    b.set_ylabel("latency (ms)")
-    a.set_title("(a) throughput")
-    b.set_title("(b) latency: p50 and p99 (dotted)")
+    a.set_ylabel("throughput (operations/s, log scale)")
+    b.set_ylabel("latency (ms, log scale)")
+    a.set_title("(a) throughput per workload")
+    b.set_title("(b) latency per workload")
+    from matplotlib.lines import Line2D
+    b.legend(
+        handles=[Line2D([], [], color=C["grey"], ls="-", lw=1.1, label="median (p50)"),
+                 Line2D([], [], color=C["grey"], ls=":", lw=0.9, label="99th percentile (p99)")],
+        frameon=False, fontsize=6, loc="center left",
+    )
     h, l = a.get_legend_handles_labels()
     fig.legend(h, l, loc="upper center", ncol=3, frameon=False, bbox_to_anchor=(0.5, 1.0))
     fig.tight_layout(rect=(0, 0, 1, 0.9))
