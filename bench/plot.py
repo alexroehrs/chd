@@ -91,7 +91,7 @@ def fig_load():
     except FileNotFoundError:
         pass
     fig, (a, b) = plt.subplots(1, 2, figsize=(2 * COL_W, 2.35))
-    styles = [("read", "read", C["read"], "o", "-"), ("readAudit", "read + on-chain audit", C["audit"], "s", "--"),
+    styles = [("read", "read", C["read"], "o", "-"), ("readAudit", "read + audit", C["audit"], "s", "--"),
               ("write", "create record", C["write"], "^", "-")]
     for key, lab, col, mk, ls in styles:
         rows = d[key]
