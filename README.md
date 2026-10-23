@@ -17,9 +17,9 @@ Erasure uses **crypto-shredding**: `eraseRecord` sets an on-chain flag, after wh
 deletes the ciphertext and every wrapped key (on the owner's `DELETE` request, or on the next
 access attempt to the record), so no key able to decrypt the record remains in the system.
 
-This repository accompanies the article *A Permissioned Blockchain for Patient-Controlled
-Health Record Sharing and Erasure* (submitted to the Journal of Internet Services and
-Applications).
+This repository accompanies the article *Chained Health Data: Patient-Controlled Health
+Record Sharing and Erasure on a Permissioned Blockchain* (submitted to the Journal of
+Internet Services and Applications).
 
 ## Repository layout
 
